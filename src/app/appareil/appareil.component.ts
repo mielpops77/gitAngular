@@ -11,6 +11,7 @@ export class AppareilComponent implements OnInit {
 
 @Input() appareilName : string;
 @Input() appareilStatus : string;
+@Input() appareilIndex: number;
 
 
 constructor( private appareilservice : appareilService) 
@@ -42,5 +43,19 @@ constructor( private appareilservice : appareilService)
       }, 2000
     );
   });
+
+  allume()
+  {
+    this.appareilservice.switchOn(this.appareilIndex);
+
+  }
+
+  eteint()
+  {
+    this.appareilservice.switchOff(this.appareilIndex);
+
+  }
+
+
 
 }

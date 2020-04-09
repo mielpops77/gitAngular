@@ -13,7 +13,7 @@ export class AppComponent {
   appareils : any [];
 
   constructor( private appareilservice : appareilService) {
-    this.appareils = this.appareilservice.appareils;
+    
     
     setTimeout(
       () => {
@@ -22,10 +22,28 @@ export class AppComponent {
     );
   }
 
+  ngOnInit() {
+    this.appareils = this.appareilservice.appareils;
+}
+
   onAllumer()
   {
+    this.appareilservice.switchOnAll();
     console.log("On allume tout !!")
     
+  }
+
+  onEteindre()
+  {
+    if(confirm('Êtes-vous sur de vouloir éteindre tous vos appareisl ?'))
+    {
+      this.appareilservice.switchOfAll();
+    } else{
+      return null;
+    }
+    
+
+    console.log("On éteint tout !!")
   }
 
 }
