@@ -1,0 +1,10 @@
+<li [ngClass]="{'list-group-item' : true,
+                'list-group-item-success' : status === 'allumé',
+                'list-group-item-danger' : status === 'éteint'}">
+        <div style="width:20px;height:20px;background-color:red;" *ngIf="status === 'éteint'"></div>
+        <div style="width:20px;height:20px;background-color:green;" *ngIf="status === 'allumé'"></div>
+        <h4 style= "color:green" *ngIf="status ==='allumé'">Appareil : {{ name }} -- Statut : {{ status }}</h4> 
+        <h4 style= "color:red" *ngIf="status ==='éteint'">Appareil : {{ name }} -- Statut : {{ status }}</h4> 
+
+
+<a routerLink="/appareils">Retour à la liste</a>
