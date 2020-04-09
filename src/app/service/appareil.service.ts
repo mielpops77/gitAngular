@@ -23,6 +23,16 @@ export class AppareilService
 
     ]
 
+
+    getAppareilById(id: number) {
+        const appareil = this.appareils.find(
+          (s) => {
+            return s.index === id;
+          }
+        );
+        return appareil;
+    }
+
     switchOnAll()
     {
         for(let appareil of this.appareils)
