@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import {AppareilService} from './service/appareil.service';
 import {AuthService} from './service/auth.service';
+import {AuthGuard} from './service/auth-guard.service'
 
 
 
@@ -18,14 +19,15 @@ import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 
 
+
 import {Routes,RouterModule} from '@angular/router';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 const appRoutes : Routes = 
 [
-  {path: 'appareils', component: AppareilViewComponent},
-  { path: 'appareils/:id', component: SingleAppareilComponent },
+  {path: 'appareils',canActivate: [AuthGuard],component: AppareilViewComponent},
+  { path: 'appareils/:id',canActivate: [AuthGuard],component: SingleAppareilComponent },
   {path: 'auth', component: AuthComponent},
   {path: '', component: AppareilViewComponent},
   { path: 'not-found', component: FourOhFourComponent },
@@ -46,8 +48,9 @@ const appRoutes : Routes =
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
+  
   ],
-  providers: [AppareilService,AuthService],
+  providers: [AppareilService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
