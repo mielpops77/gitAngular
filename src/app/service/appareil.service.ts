@@ -1,4 +1,4 @@
-export class appareilService
+export class AppareilService
 {
 
     appareils=

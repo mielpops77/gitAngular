@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import {appareilService} from './service/appareil.service';
+
+
+
+import {AppareilService} from './service/appareil.service';
+import {AuthService} from './service/auth.service';
 
 
 
@@ -36,7 +40,7 @@ const appRoutes : Routes =
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [appareilService],
+  providers: [AppareilService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
